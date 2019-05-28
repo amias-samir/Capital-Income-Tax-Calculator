@@ -60,6 +60,8 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
     extraExpensesController.text = taxRateDetails.extre_expenses;
 
 
+    int _radioValue1 = 1 ;
+
     return WillPopScope(child: Scaffold(
       appBar: AppBar(
         title: new Text("पूंजीगत लाभकर क्यालकुलेटर"),
@@ -69,9 +71,40 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
       ),
       body: Padding(padding: EdgeInsets.all(16.0),
       child: ListView(
-//        padding: EdgeInsets.only(bottom: 10.0),
         children: <Widget>[
-          
+
+          Text('जग्गाधनी छान्नुहोस्', style: textStyle,),
+          Padding(padding: EdgeInsets.only(top: 10.0)),
+
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Radio(
+                value: 0,
+                groupValue: _radioValue1,
+                onChanged: (int i) => setState(() => _radioValue1 = i),
+              ),
+              new Text(
+                'व्यक्ति',
+                style: new TextStyle(fontSize: 16.0),
+              ),
+              new Radio(
+                value: 1,
+                groupValue: _radioValue1,
+                onChanged: (int i) => setState(() => _radioValue1 = i),
+              ),
+              new Text(
+                'संस्था',
+                style: new TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ],
+          ),
+
+          Padding(padding: EdgeInsets.only(top: 32.0)),
+
+
           Text('हाल गर्न खोजेको कारोबार विवरण', style: textStyle,),
           Padding(padding: EdgeInsets.only(top: 10.0)),
           // transaction process
@@ -288,6 +321,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
         selectedDate = picked;
       });
   }
+
 
 
 }
