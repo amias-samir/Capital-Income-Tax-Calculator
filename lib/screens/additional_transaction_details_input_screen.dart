@@ -51,7 +51,7 @@ Widget build(BuildContext context) {
 
   return WillPopScope(child: Scaffold(
     appBar: AppBar(
-      title: new Text("पचालु आर्थिक वर्षभित्र जग्गाधनीले मुलुकभित्र गरेका अन्य बिक्री कारोबार"),
+      title: new Text("चालु आर्थिक वर्षभित्र जग्गाधनीले मुलुकभित्र गरेका अन्य बिक्री कारोबार"),
       leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (){
         moveToLastScreen();
       }),
