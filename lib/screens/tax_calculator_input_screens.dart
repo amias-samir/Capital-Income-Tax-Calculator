@@ -40,6 +40,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
 
 //  TaxCalculatorInputState(this.taxRateDetails, this.appBarTitle);
 
+  int _radioValue1 = -1 ;
 
 
   @override
@@ -48,19 +49,12 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
     TextStyle textStyle = Theme.of(context).textTheme.title;
     TextStyle subTextStyle = Theme.of(context).textTheme.body1;
 
-
-//    thailiAankaWithGharController.text = 'थैली अंक(घर लगायत अन्य खर्च सहित';
-//    thailiAankaOwnershipController.text = 'थैली अंक';
-//    transactionDateController.text = 'कारोबार मिति';
-//    extraExpensesController.text = 'अन्य खर्च';
-
     thailiAankaWithGharController.text = taxRateDetails.thaili_aanka;
     thailiAankaOwnershipController.text = taxRateDetails.thaili_aanka_ownership;
     transactionDateController.text = "${selectedDate.toLocal()}";
     extraExpensesController.text = taxRateDetails.extre_expenses;
 
 
-    int _radioValue1 = 1 ;
 
     return WillPopScope(child: Scaffold(
       appBar: AppBar(
@@ -76,13 +70,14 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
           Text('जग्गाधनी छान्नुहोस्', style: textStyle,),
           Padding(padding: EdgeInsets.only(top: 10.0)),
 
+//  select Owner radio button element
           new Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Radio(
                 value: 0,
                 groupValue: _radioValue1,
-                onChanged: (int i) => setState(() => _radioValue1 = i),
+                onChanged: _handleRadioValueChange1,
               ),
               new Text(
                 'व्यक्ति',
@@ -91,7 +86,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
               new Radio(
                 value: 1,
                 groupValue: _radioValue1,
-                onChanged: (int i) => setState(() => _radioValue1 = i),
+                onChanged: _handleRadioValueChange1,
               ),
               new Text(
                 'संस्था',
@@ -320,6 +315,21 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
       setState(() {
         selectedDate = picked;
       });
+  }
+
+  void _handleRadioValueChange1(int value) {
+    setState(() {
+      _radioValue1 = value;
+
+      switch (_radioValue1) {
+        case 0:
+          print("Person !!!!!");
+          break;
+        case 1:
+          print("Organization !!!!!");
+          break;
+      }
+    });
   }
 
 
