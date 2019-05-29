@@ -1,4 +1,4 @@
-class TaxRateDetails {
+class CurrentFiscalYearTransactionDetails {
   int _transaction_process;
   int _transaction_type;
   String _thaili_aanka;
@@ -6,12 +6,8 @@ class TaxRateDetails {
   int _transaction_type_ownership;
   DateTime _transaction_date;
   String _extre_expenses;
-  String _land_owner;
-  bool _is_other_transaction;
 
-  TaxRateDetails();
-
-
+  CurrentFiscalYearTransactionDetails();
 
   int get transaction_process => _transaction_process;
 
@@ -31,17 +27,6 @@ class TaxRateDetails {
 
   String get thaili_aanka => _thaili_aanka;
 
-  bool get is_other_transaction => _is_other_transaction;
-
-  set is_other_transaction(bool value) {
-    _is_other_transaction = value;
-  }
-
-  String get land_owner => _land_owner;
-
-  set land_owner(String value) {
-    _land_owner = value;
-  }
 
   String get extre_expenses => _extre_expenses;
 
