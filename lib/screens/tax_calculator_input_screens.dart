@@ -40,7 +40,8 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
 
 //  TaxCalculatorInputState(this.taxRateDetails, this.appBarTitle);
 
-  int _radioValue1 = -1 ;
+  int _radioValueLandOwner = -1 ;
+  int _radioValueIsOtherTransaction = -1 ;
 
 
   @override
@@ -76,7 +77,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
             children: <Widget>[
               new Radio(
                 value: 0,
-                groupValue: _radioValue1,
+                groupValue: _radioValueLandOwner,
                 onChanged: _handleRadioValueChange1,
               ),
               new Text(
@@ -85,7 +86,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
               ),
               new Radio(
                 value: 1,
-                groupValue: _radioValue1,
+                groupValue: _radioValueLandOwner,
                 onChanged: _handleRadioValueChange1,
               ),
               new Text(
@@ -265,6 +266,37 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
               ),
             ),
           ),
+
+          Padding(padding: EdgeInsets.only(top: 32.0)),
+          Text('चालु आर्थिक वर्षभित्र जग्गाधनीले मुलुकभित्र गरेका अन्य बिक्री कारोबार (छ / छैन )?', style: textStyle,),
+          Padding(padding: EdgeInsets.only(top: 10.0)),
+
+//  select Owner radio button element
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Radio(
+                value: 0,
+                groupValue: _radioValueIsOtherTransaction,
+                onChanged: _handleRadioValueChangeOtherTransaction,
+              ),
+              new Text(
+                'छ',
+                style: new TextStyle(fontSize: 16.0),
+              ),
+              new Radio(
+                value: 1,
+                groupValue: _radioValueIsOtherTransaction,
+                onChanged: _handleRadioValueChangeOtherTransaction,
+              ),
+              new Text(
+                'छैन',
+                style: new TextStyle(
+                  fontSize: 16.0,
+                ),
+              ),
+            ],
+          ),
           
         ],
       )),
@@ -319,9 +351,9 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
 
   void _handleRadioValueChange1(int value) {
     setState(() {
-      _radioValue1 = value;
+      _radioValueLandOwner = value;
 
-      switch (_radioValue1) {
+      switch (_radioValueLandOwner) {
         case 0:
           taxRateDetails.land_owner = 'व्यक्ति';
           print("Person !!!!! "+taxRateDetails.land_owner);
@@ -329,6 +361,23 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
         case 1:
           taxRateDetails.land_owner = 'संस्था';
           print("Organization !!!!! "+taxRateDetails.land_owner);
+          break;
+      }
+    });
+  }
+
+  void _handleRadioValueChangeOtherTransaction(int value) {
+    setState(() {
+      _radioValueIsOtherTransaction = value;
+
+      switch (_radioValueIsOtherTransaction) {
+        case 0:
+          taxRateDetails.is_other_transaction = 0;
+          print("Other Transaction !!!!! true");
+          break;
+        case 1:
+          taxRateDetails.is_other_transaction = 1;
+          print("Other Transaction !!!!! false");
           break;
       }
     });

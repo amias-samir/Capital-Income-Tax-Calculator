@@ -7,7 +7,7 @@ class TaxRateDetails {
   DateTime _transaction_date;
   String _extre_expenses;
   String _land_owner;
-  bool _is_other_transaction;
+  int _is_other_transaction;
 
   TaxRateDetails();
 
@@ -31,9 +31,9 @@ class TaxRateDetails {
 
   String get thaili_aanka => _thaili_aanka;
 
-  bool get is_other_transaction => _is_other_transaction;
+  int get is_other_transaction => _is_other_transaction;
 
-  set is_other_transaction(bool value) {
+  set is_other_transaction(int value) {
     _is_other_transaction = value;
   }
 
