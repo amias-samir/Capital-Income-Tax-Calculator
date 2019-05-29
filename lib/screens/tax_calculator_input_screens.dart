@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tax_calculator_app/models/tax_rate_details_model.dart';
+import 'package:flutter_tax_calculator_app/models/general_transaction_details_model.dart';
 import 'package:intl/intl.dart';
 import 'package:date_format/date_format.dart';
 
@@ -25,7 +25,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
   static var _transactionType = ['Type 1', 'Type 2', 'Type 3', 'Type 4', 'Type 5', 'Type 6'];
   static var _transactionTypeOwnership = ['Type 1 Ownership', 'Type 2 Ownership', 'Type 3 Ownership', 'Type 4 Ownership', 'Type 5 Ownership', 'Type 6 Ownership'];
 
-  TaxRateDetails taxRateDetails = TaxRateDetails();
+  GeneralTransactionDetails taxRateDetails = GeneralTransactionDetails();
   String appBarTitle;
 
   DateTime selectedDate = DateTime.now();
@@ -165,9 +165,10 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
                   labelText: 'थैली अंक(घर लगायत अन्य खर्च सहित*',
                   labelStyle: textStyle,
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0)
+                      borderRadius: BorderRadius.circular(5.0),
                   )
               ),
+              keyboardType: TextInputType.numberWithOptions(signed: false, decimal: true),
             ),
           ),
 
