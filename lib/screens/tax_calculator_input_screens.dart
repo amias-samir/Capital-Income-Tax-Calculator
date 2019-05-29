@@ -323,10 +323,12 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
 
       switch (_radioValue1) {
         case 0:
-          print("Person !!!!!");
+          taxRateDetails.land_owner = 'व्यक्ति';
+          print("Person !!!!! "+taxRateDetails.land_owner);
           break;
         case 1:
-          print("Organization !!!!!");
+          taxRateDetails.land_owner = 'संस्था';
+          print("Organization !!!!! "+taxRateDetails.land_owner);
           break;
       }
     });
