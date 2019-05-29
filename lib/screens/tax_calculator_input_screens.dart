@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tax_calculator_app/models/general_transaction_details_model.dart';
+import 'package:flutter_tax_calculator_app/screens/additional_transaction_details_input_screen.dart';
 import 'package:intl/intl.dart';
 import 'package:date_format/date_format.dart';
 
@@ -374,6 +375,7 @@ class TaxCalculatorInputState extends State<TaxcalculatorInputScreen>{
       switch (_radioValueIsOtherTransaction) {
         case 0:
           taxRateDetails.is_other_transaction = 0;
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => AdditionalTransactionDetailsInputScreen()));
           print("Other Transaction !!!!! true");
           break;
         case 1:
